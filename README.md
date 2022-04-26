@@ -17,6 +17,13 @@ including the `let!`/`return!`/`yield!` syntax
 Add this to your `Cargo.toml`:
 ```toml
 [dependencies]
-computation_expression = { path="Whereever you placed it" }
+computation_expression = { git = "https://github.com/xNxExOx/computation_expression" }
 ```
-Because I decided to not publish it on crates.io (yet) you need to use path for now.
+Because I decided to not publish it on crates.io (yet) you need to use git dependency for now.
+```rs
+    let x = option!(
+        let! x = Some(3);
+        let y = 7;
+        x + y
+    ); // x == Some(10)
+```
