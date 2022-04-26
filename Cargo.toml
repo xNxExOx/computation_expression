@@ -1,0 +1,16 @@
+[package]
+name = "computation_expression"
+version = "0.0.0"
+authors = ["Jakub Bandola <xxxkubikx@gmail.com>"]
+description = "Proof of concept that F#'s computation expressions can be done in Rust"
+keywords = ["F#", "proc_macro", "procmacro", "proof of concept"]
+categories = ["compilers"]
+edition = "2021"
+license = "MIT OR Apache-2.0"
+readme = "README.md"
+
+[lib]
+
+[dependencies]
+computation_expression_macro = { path= "computation_expression_macro" }
+
