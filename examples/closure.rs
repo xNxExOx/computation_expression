@@ -10,7 +10,7 @@ fn main() {
         let y = 7;
         return Some(x + y);
     }}();
-    println!("{:?}", x);
+    println!("Simple option case: {:?}", x);
 
     let x = {|| {
         for i in 0..100u32 {
@@ -38,15 +38,16 @@ fn main() {
         }?;
         return Some(x + y + z);
     }}();
-    println!("{:?}", x);
+    println!("More complex option case: {:?}", x);
 
+    // Types for result are needed because it can not infer the other generic type from result type :(
     let x = {|| -> Result<i32,()> {
         let x: Result<i32, ()> = Ok(3);
         let x = x?;
         let y = 7;
         return Ok(x + y);
     }}();
-    println!("{:?}", x);
+    println!("Result: {:?}", x);
 
     let x = {|| -> Result<i32,&str> {
         let x = Ok(3)?;
@@ -54,7 +55,7 @@ fn main() {
         let y = y?;
         return Ok(x + y);
     }}();
-    println!("{:?}", x);
+    println!("And error in result: {:?}", x);
 
     let x = {|| -> Result<i32,i32> {
         let x: Result<i32, i32> = Ok(3);
@@ -64,4 +65,14 @@ fn main() {
         return Ok(x + y);
     }}();
     println!("{:?}", x);
+
+    let x = || {
+        std::thread::sleep(std::time::Duration::from_millis(500));
+        return 42;
+    };
+    println!("lazy evaluation start");
+    let start = std::time::Instant::now();
+    let x = x();
+    let duration = start.elapsed();
+    println!("calculated: {:?} in {:?}", x, duration);
 }

@@ -27,3 +27,11 @@ Because I decided to not publish it on crates.io (yet) you need to use git depen
         x + y
     ); // x == Some(10)
 ```
+
+## Examples
+I have examples for all of the above, and few extra:
+- `try` unfortunately not yet stable, but once it will stabilize, making equivalent of any computation expression,
+that uses only `let!`, and `return!` will be super easy by implementing `Try` trait, which is how it now works for
+`Option`, and `Result`
+- `closure` this example show again how to replace `option`, `result`,  and `lazy` computation expression,
+but without any macro
